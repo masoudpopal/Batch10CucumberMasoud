@@ -1,0 +1,189 @@
+Given - precondition/ prerequisite
+When - perform action
+And - supporting tag that can be used with all other tags
+Then - Expected output
+
+Who writes Acceptance criteria -
+
+Who uses gherkin -
+
+BA -
+QA -
+
+
+US - 123321 - Admin should be able to search an employee in HRMS application
+
+Acceptance criteria -
+	1. search by id
+	2. search by name
+
+1.
+Given user opens browser and navigated to HRMS
+And user is logged in as an admin
+And user is on employee list page
+When user enters valid employee id
+And user clicks on search button
+Then user see employee in the employee table
+
+2.
+Given user opens browser and navigated to HRMS
+And user is logged in as an admin
+And user is on employee list page
+When user enters firstname and last
+And user clicks on search button
+Then user see employee in the employee table
+
+maven - java
+selenium
+cucumber
+apache
+commons
+
+User story - verify login functionality
+
+Acceptance criteria -
+
+- valid admin login
+
+- valid ess login
+
+- valid username and invalid password
+
+Recap class 1 -
+
+What is cucumber framework?
+it supports BDD where we use gherkin language
+
+tags - Given When And Then Scenario Feature
+
+Given - Precondition
+When - Actions to be done
+Then - Expected output
+And - It is a supporting keyword that can be used with other keywords in a scenario
+
+
+What is step definition
+Step definition is the code implemented for the steps mentioned in feature file
+
+page object model design pattern
+
+Test runner
+We use test runner to execute all features in multiple combinations
+
+
+features = we define the path of our feature file here
+glue = we define the path of our steps here
+dry run = when it is set to true, it stops actual execution and scan all the steps
+strict=true, it checks all the steps definition
+monochrome = it removes all unreadable characters from the console output
+tags = we can segragate scenarios based on tags and can execute them accordingly
+
+Class 3 -
+
+Recap -
+
+Runner class - This is the configuration file in cucumber framework from we can execute our features.
+
+@RunWith - junit
+@CucumberOptions - features, glue, dryRun, monochrome, strict, tags,
+
+hooks - @Before - we use this to define our pre conditions
+        @After - we use this to define our post conditions
+
+what is the difference in between hooks and background?
+Background is feature file specific which will be limited to a feature
+Hooks are applicable for all the scenarios available in features
+
+Data driven test
+
+mike123 meme lopez
+nailya321 meme reston
+sule456 meme abc
+
+
+
+REVIEW CLASS -
+
+What is BDD -
+behavioral driven development is a technique which allows us to write scenarios in plain english sentences.
+
+gherkin language
+
+Feature - To define the scope of feature file, this should be the first line of every feature file
+Scenario - it is considered as test cases in cucumber
+Given - pre-condition
+When - To perform actions
+And - Supporting tag
+Then - Expected result/output
+
+
+step definitions - we write the implemented steps here for all the feature files
+
+Test runner - it is a runner class which allows to configure various options for execution
+
+hooks - to write pre condition and post condition we use hooks
+@Before and @After
+
+
+Class 4 -
+
+
+Recap -
+
+Test runner -
+
+@RunWith -
+@CucumberOptions -
+features - path of our feature file
+glue - path of our steps package
+dryRun - if it is set to true, it checks all the definitions of steps if it is not implemented, it gives us snippet to implement
+monochrome - to avoid/remove all unreadable characters from console output
+tags - to define/filter scenarios for execution we use tags
+strict -
+
+Hooks -
+@Before - Pre condition
+@After - post condition
+
+Background -
+In a specific feature file, if we have common steps for all the scenarios, we write them in feature file
+
+Hooks is applicable to all the features whereas background is limited to one specific feature file
+
+
+Scenario and Scenario Outline difference -
+When we use examples table for data driven testing, we use scenario outline instead of scenario
+In scenario Outline we use the keys first and the values
+
+Data table -
+
+
+
+
+HW - User should be able to modify employee personal details
+Driver's license no
+License exp date
+SSN
+SIN
+Gender
+Marital status
+Nationality
+DOB
+Nickname
+Smoker
+Military services
+
+
+Class 5
+
+Recap -
+Datatable as list - when we don't provide headers in the table
+excel reading example for adding the employees -
+plugins- pretty is responsible to print all the steps in the console
+html plugin generates cucumber.html report in target folder
+takeScreenshot Method - We use Scenario in hooks that accepts array of byte that's why we changed takescreenshot method in common methods class
+cucumber maven report - it generates json report in target under cucumber-html-report
+
+
+mvn test -cucumber.options="--tags @test"
+mvn clean verify -Dcucumber.filter.tags="@test"
