@@ -26,10 +26,16 @@ public class CommonMethods {
         switch (ConfigReader.getPropertyValue("browser")) {
             case "chrome":
                 //  System.setProperty("webdriver.chrome.driver", "src/drivers/chromedriver.exe");
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.setHeadless(true);
-                WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver(chromeOptions);
+                if(ConfigReader.getPropertyValue("headless").equals("ture")){
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.setHeadless(true);
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver(chromeOptions);
+                }else{
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                }
+
                 // By adding the chromeOptions and make the setHeadless to TRUE and pass the chromeOptions to ChromeDriver parenthesis then
                 // when you execute your test cases it will not open any chrome browser and execute everything behind the scene.
                 // so the code will execute without seeing any browser to open any website.
